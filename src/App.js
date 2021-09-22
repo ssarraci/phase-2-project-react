@@ -1,23 +1,52 @@
-import logo from './logo.svg';
 import './App.css';
+import Idols from './Idols'
+import IdolForm from './IdolForm'
+import Nav from './Nav'
+import Home from './Home'
+import { Route, Switch} from 'react-router-dom'
+import {useEffect, useState} from 'react'
 
 function App() {
+
+  const [idols, setIdols] = useState([])
+
+  useEffect(() => {
+    fetch(`http://localhost:3000/idols`)
+    .then(res => res.json())
+    .then(data => setIdols(data))
+  }, [])
+
+  function addIdol(addIdol) {
+    setIdols([...idols, addIdol])
+  }
+
+  function deleteIdol(deleteIdol) {
+    const updatedIdols = idols.filter((idol) => idol.id !== deleteIdol.id)
+    setIdols(updatedIdols)
+  }
+
+  function updatedIdol(updatedIdol) {
+    const updatedIdols = idols.map((idol) => idol.id === updatedIdol.id ? updatedIdol : idol)
+    setIdols(updatedIdols)
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Nav/>
+      <Switch>
+        <Route exact path="/idols">
+          <Idols 
+            idols={idols}
+            deleteIdol={deleteIdol}
+            updatedIdol={updatedIdol}/>
+        </Route>
+        <Route exact path="/idols/new">
+          <IdolForm addIdol={addIdol}/>
+        </Route>
+        <Route exact path ="/">
+          <Home />
+        </Route>
+      </Switch>
     </div>
   );
 }
