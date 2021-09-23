@@ -13,7 +13,7 @@ function IdolCard({idol, deleteIdol, updatedIdol}) {
 
    function likeClick() {
       const likeIdol = {
-         likes : idol.likes + 1,
+         likes: idol.likes + 1,
       }
 
       fetch(`http://localhost:3000/idols/${idol.id}`, {
@@ -31,12 +31,13 @@ function IdolCard({idol, deleteIdol, updatedIdol}) {
       <div className="card">
          <br/>
          <h3>{idol.name}</h3>
-         <h4>From: {idol.group}</h4>
+         <h4>From {idol.group}</h4>
          <img src={idol.image} alt={idol.name} className="idol-pic" style={{height:200}}/>
          <h5>Likes: {idol.likes}</h5> 
-         <button className="delete-btn" onClick={deleteClick}>X</button>
+         <button className="delete-btn" onClick={deleteClick}>Delete</button>
          <button className="like-btn" onClick={likeClick}>Like</button>  
          <br/>
+         <hr/>
       </div>
    )
 }

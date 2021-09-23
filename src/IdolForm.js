@@ -9,7 +9,8 @@ function IdolForm({addIdol}) {
    })
 
    const newIdol = {
-      ...formData
+      ...formData,
+      likes: 0,
    }
 
    function handleSubmit(e) {
@@ -48,7 +49,7 @@ function IdolForm({addIdol}) {
 
             <label> Group: 
                   <input type="text" 
-                  name="name" 
+                  name="group" 
                   value={formData.group} 
                   onChange={handleChange}/>
             </label>
