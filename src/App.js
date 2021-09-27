@@ -25,8 +25,8 @@ function App() {
     setIdols(updatedIdols)
   }
 
-  function updatedIdol(updatedIdol) {
-    const changedIdols = idols.map((idol) => idol.id === updatedIdols.id ? updatedIdols : idol)
+  function updatedIdol(likedIdols) {
+    const changedIdols = idols.map((idol) => idol.id === likedIdols.id ? likedIdols : idol)
     setIdols(changedIdols)
   }
 
