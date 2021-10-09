@@ -38,6 +38,7 @@ function IdolForm({addIdol}) {
       <div>
          <br/>
          <form onSubmit={handleSubmit}>
+            
             <label> Name: 
                   <input type="text" 
                   name="name" 

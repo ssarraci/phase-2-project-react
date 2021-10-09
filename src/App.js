@@ -4,11 +4,13 @@ import IdolForm from './IdolForm'
 import Nav from './Nav'
 import Home from './Home'
 import { Route, Switch} from 'react-router-dom'
-import {useEffect, useState} from 'react'
+import React, {useEffect, useState} from 'react'
 
 function App() {
 
   const [idols, setIdols] = useState([])
+  
+  
 
   useEffect(() => {
     fetch(`http://localhost:3000/idols`)
@@ -30,6 +32,12 @@ function App() {
     setIdols(changedIdols)
   }
 
+  function searchedIdol(searchedTerm){
+    const searched = idols.filter((idol) => idol.name.includes(searchedTerm)
+    )
+    setIdols(searched)
+  }
+
   return (
     <div className="App">
       <Nav/>
@@ -38,7 +46,8 @@ function App() {
           <Idols 
             idols={idols}
             deleteIdol={deleteIdol}
-            updatedIdol={updatedIdol}/>
+            updatedIdol={updatedIdol}
+            searchedIdol={searchedIdol}/>
         </Route>
         <Route exact path="/idols/new">
           <IdolForm addIdol={addIdol}/>
