@@ -6,4 +6,7 @@
 
 # Navigation
    There is client-side routing. 3 different routes to take the users to different parts of the app. Home is the basic one, just gives a definition of what the term idol is in Kpop and shows a cute picture. All My Idols is the whole list of idols that you have. It has the like and delete button on that page. Add a new Idol is the form where the user is able to add a new idol.
+<<<<<<< HEAD
    
+=======
+>>>>>>> 1ffc1c4c1445045996c281dd0d7d27751f79825e
